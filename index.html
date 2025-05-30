@@ -1,0 +1,72 @@
+index<!-- index.html -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Movie Recommendation System</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <style>
+    body {
+      background: url("/static/images.jpg") no-repeat center center fixed;
+      background-size: cover;
+      font-family: Arial, sans-serif;
+      color: white;
+      text-align: center;
+      margin: 0;
+    }
+
+    .container {
+      background: rgba(0, 0, 0, 0.75);
+      padding: 40px;
+      margin: 100px auto;
+      max-width: 700px;
+      border-radius: 15px;
+      box-shadow: 0 0 20px #ffffff88;
+    }
+
+    input[type="text"], button {
+      padding: 12px;
+      font-size: 1rem;
+      border-radius: 8px;
+      border: none;
+    }
+
+    button {
+      background-color: #00ffd5;
+      color: black;
+      cursor: pointer;
+      margin-top: 10px;
+    }
+
+    a {
+      color: #00ffd5;
+      text-decoration: none;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h1>Movie Recommendation System</h1>
+    <form method="POST">
+      <input list="movies" name="movie" placeholder="Enter a movie name" value="{{ movie_name }}" required />
+      <datalist id="movies">
+        {% for title in movies_list %}
+          <option value="{{ title }}">
+        {% endfor %}
+      </datalist>
+      <button type="submit">Get Recommendations</button>
+    </form>
+
+    {% if recommendations %}
+      <h2>Recommended Movies:</h2>
+      <ul>
+        {% for movie in recommendations %}
+          <li><a href="{{ url_for('movie_detail', movie_name=movie) }}">{{ movie }}</a></li>
+        {% endfor %}
+      </ul>
+    {% elif movie_name %}
+      <p>No similar movies found. Please try another title.</p>
+    {% endif %}
+  </div>
+</body>
+</html>
