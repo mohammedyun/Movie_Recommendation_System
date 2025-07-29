@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>{{ movie.title }} - Details</title>
+  <style>
+    body {
+      background-color: #111;
+      color: white;
+      font-family: Arial, sans-serif;
+      text-align: center;
+      padding: 40px;
+    }
+
+    img {
+      max-width: 300px;
+      border-radius: 10px;
+      box-shadow: 0 0 15px #00ffd5;
+      margin-bottom: 20px;
+    }
+
+    h1 {
+      color: #00ffd5;
+    }
+
+    .info {
+      margin: 20px auto;
+      max-width: 600px;
+      text-align: left;
+    }
+
+    .trailer {
+      margin-top: 30px;
+    }
+
+    button {
+      padding: 12px 20px;
+      background-color: #00ffd5;
+      border: none;
+      border-radius: 6px;
+      color: black;
+      font-weight: bold;
+      cursor: pointer;
+      margin-top: 15px;
+    }
+
+    a {
+      color: #00ffd5;
+      display: block;
+      margin-top: 20px;
+      text-decoration: none;
+    }
+  </style>
+</head>
+<body>
+  <img src="{{ movie.poster_url }}" alt="Poster of {{ movie.title }}">
+  <h1>{{ movie.title }}</h1>
+
+  <div class="info">
+    <p><strong>Rating:</strong> {{ movie.rating }}/10</p>
+    <p><strong>Genres:</strong> {{ movie.genres | join(', ') }}</p>
+    <p><strong>Description:</strong> {{ movie.description }}</p>
+  </div>
+
+  {% if movie.trailer_url %}
+    <div class="trailer">
+      <a href="{{ movie.trailer_url }}" target="_blank">
+        <button>🎬 Watch Trailer</button>
+      </a>
+    </div>
+  {% endif %}
+
+  <form action="{{ url_for('subscribe', movie_name=movie.title) }}" method="GET">
+    <button type="submit">Subscribe to Watch</button>
+  </form>
+
+  <a href="/">← Back to Home</a>
+</body>
+</html>

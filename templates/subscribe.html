@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Subscribe to Watch {{ movie_name }}</title>
+  <style>
+    body {
+      background-image: url('/static/images.jpg');
+      background-size: cover;
+      font-family: 'Segoe UI', sans-serif;
+      color: white;
+      text-align: center;
+    }
+
+    .card {
+      background-color: rgba(0, 0, 0, 0.8);
+      margin: 100px auto;
+      padding: 40px;
+      border-radius: 15px;
+      width: 350px;
+    }
+
+    button {
+      padding: 12px;
+      width: 100%;
+      background-color: #ff0000;
+      color: white;
+      border: none;
+      border-radius: 6px;
+      font-weight: bold;
+      cursor: pointer;
+    }
+  </style>
+</head>
+<body>
+  <div class="card">
+    <h1>{{ movie_name }}</h1>
+    <p>To watch this movie, please proceed to payment.</p>
+    <form action="{{ url_for('payment') }}" method="GET">
+      <button type="submit">Proceed to Payment</button>
+    </form>
+    <a href="/">← Back to Home</a>
+  </div>
+</body>
+</html>

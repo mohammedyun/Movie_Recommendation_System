@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Fake Payment</title>
+  <style>
+    body {
+      background-color: #1e1e1e;
+      color: white;
+      font-family: Arial, sans-serif;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+    }
+
+    .payment-box {
+      background: #111;
+      padding: 40px;
+      border-radius: 10px;
+      box-shadow: 0 0 15px #ffcc00;
+      width: 350px;
+      text-align: center;
+    }
+
+    input, button {
+      width: 100%;
+      padding: 10px;
+      margin-bottom: 15px;
+      border-radius: 5px;
+      border: none;
+    }
+
+    button {
+      background-color: #ff0000;
+      color: white;
+    }
+
+    a {
+      color: #ffcc00;
+    }
+  </style>
+</head>
+<body>
+  <form class="payment-box" method="POST" action="/payment">
+    <h2>Enter Payment Details</h2>
+    <input type="text" placeholder="Cardholder Name" required>
+    <input type="text" placeholder="Card Number" required>
+    <input type="text" placeholder="Expiry Date (MM/YY)" required>
+    <input type="text" placeholder="CVV" required>
+    <button type="submit">Pay Now</button>
+    <a href="/">← Cancel and Return</a>
+  </form>
+</body>
+</html>
